@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace />
+    <Version>1.0.0</Version>
+    <Authors>ihourglass</Authors>
+    <Description>rougamo apm code weave basic abstractions</Description>
+    <PackageTags>AOP APM</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+    <PackageOutputPath>$(SolutionDir)nugets</PackageOutputPath>
+    <PackageProjectUrl>https://github.com/inversionhourglass/Rougamo.APM</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/inversionhourglass/Rougamo.APM.git</RepositoryUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/inversionhourglass/Rougamo.APM/master/rougamo-apm.png</PackageIconUrl>
+    <RepositoryType>git</RepositoryType>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Rougamo.Fody" Version="1.0.1" />
+  </ItemGroup>
+
+</Project>

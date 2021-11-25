@@ -3,10 +3,10 @@
 namespace Rougamo.APM
 {
     /// <summary>
-    /// span annotation, record parameter and return value by default
+    /// span annotation, not record parameter and return value by default
     /// </summary>
     [AttributeUsage(AttributeTargets.Method)]
-    public class SpanAttribute : Attribute
+    public class PureSpanAttribute : Attribute
     {
     }
 }

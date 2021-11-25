@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Rougamo.APM
 {
@@ -6,7 +8,7 @@ namespace Rougamo.APM
     /// ignore parameter value record, working with <see cref="SpanAttribute"/>
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.ReturnValue)]
-    public class ApmIgnoreAttribute : Attribute
+    public class ApmRecordAttribute : Attribute
     {
     }
 }

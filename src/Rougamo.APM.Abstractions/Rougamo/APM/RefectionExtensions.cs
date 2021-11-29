@@ -2,6 +2,7 @@
 using Rougamo.Context;
 using System.Collections.Concurrent;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace Rougamo.APM
@@ -10,6 +11,20 @@ namespace Rougamo.APM
     /// </summary>
     public static class RefectionExtensions
     {
+
+        private const int ARGS_FLAG_COUNT = 48;
+        private const long ARGS_FLAG_MASK = 0X7FFFFFFFFFFFFFFF >> (63 - ARGS_FLAG_COUNT);
+        private const int RETURN_POSITION = 63;
+        private const int THROWS_POSITION = 62;
+        /*
+         * is record return value
+         * |
+         * |                   |-------------------48bits record args--------------------|
+         * 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+         *  |
+         *  |
+         * is force exception throws
+         */
         private static ConcurrentDictionary<MethodBase, long> _Ignores = new ConcurrentDictionary<MethodBase, long>();
 
         private static ConcurrentDictionary<MethodBase, long> _Records = new ConcurrentDictionary<MethodBase, long>();
@@ -26,21 +41,23 @@ namespace Rougamo.APM
         {
             var ignores = 0L;
             var parameters = method.GetParameters();
-            var length = parameters.Length > 63 ? 63 : parameters.Length;
+            var length = parameters.Length > ARGS_FLAG_COUNT ? ARGS_FLAG_COUNT : parameters.Length;
             for (var i = 0; i < length; i++)
             {
-                var paraAttrs = parameters[i].GetCustomAttributes(typeof(ApmIgnoreAttribute), true);
-                if (paraAttrs.Length != 0)
+                if(parameters[i].HasAttribute<ApmIgnoreAttribute>())
                 {
                     ignores |= 1L << i;
                 }
             }
+            if(method.HasAttribute<ApmThrowsAttribute>())
+            {
+                ignores |= 1L << THROWS_POSITION;
+            }
             if(method is MethodInfo methodInfo)
             {
-                var returnAttrs = methodInfo.ReturnParameter.GetCustomAttributes(typeof(ApmIgnoreAttribute), true);
-                if(returnAttrs.Length != 0)
+                if(methodInfo.ReturnParameter.HasAttribute<ApmIgnoreAttribute>())
                 {
-                    ignores |= 1L << 63;
+                    ignores |= 1L << RETURN_POSITION;
                 }
             }
 
@@ -59,21 +76,23 @@ namespace Rougamo.APM
         {
             var records = 0L;
             var parameters = method.GetParameters();
-            var length = parameters.Length > 63 ? 63 : parameters.Length;
+            var length = parameters.Length > ARGS_FLAG_COUNT ? ARGS_FLAG_COUNT : parameters.Length;
             for (var i = 0; i < length; i++)
             {
-                var paraAttrs = parameters[i].GetCustomAttributes(typeof(ApmRecordAttribute), true);
-                if (paraAttrs.Length != 0)
+                if (parameters[i].HasAttribute<ApmRecordAttribute>())
                 {
                     records |= 1L << i;
                 }
             }
+            if (method.HasAttribute<ApmThrowsAttribute>())
+            {
+                records |= 1L << THROWS_POSITION;
+            }
             if (method is MethodInfo methodInfo)
             {
-                var returnAttrs = methodInfo.ReturnParameter.GetCustomAttributes(typeof(ApmRecordAttribute), true);
-                if (returnAttrs.Length != 0)
+                if (methodInfo.ReturnParameter.HasAttribute<ApmRecordAttribute>())
                 {
-                    records |= 1L << 63;
+                    records |= 1L << RETURN_POSITION;
                 }
             }
 
@@ -81,11 +100,38 @@ namespace Rougamo.APM
         }
 
         /// <summary>
+        /// get method parameter recording string
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static string GetMethodParameters(this MethodContext context, ISerializer serializer, bool recordByDefault)
+        {
+            return recordByDefault ? GetMethodParametersByIgnore(context, serializer) : GetMethodParametersByRecord(context, serializer);
+        }
+
+        /// <summary>
+        /// get method return value string
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static string GetMethodReturnValue(this MethodContext context, ISerializer serializer, bool recordByDefault)
+        {
+            return recordByDefault ? GetMethodReturnValueByIgnore(context, serializer) : GetMethodReturnValueByRecord(context, serializer);
+        }
+
+        /// <summary>
+        /// is mute exception for apm if it has been recorded
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool IsMuteExceptionForApm(this MethodContext context, bool recordByDefault)
+        {
+            return recordByDefault ? IsMuteExceptionForApmByIgnores(context) : IsMuteExceptionForApmByRecord(context);
+        }
+
+        /// <summary>
         /// get method parameter recording string by <see cref="ApmIgnoreAttribute"/>
         /// </summary>
         public static string GetMethodParametersByIgnore(this MethodContext context, ISerializer serializer)
         {
-            var ignores = context.Method.GetApmIgnores() & 0x7FFFFFFFFFFFFFFF;
+            var ignores = context.Method.GetApmIgnores() & ARGS_FLAG_MASK;
             var count = context.Arguments.Length;
             var builder = new StringBuilder();
             for (var i = 0; i < count; i++)
@@ -113,7 +159,7 @@ namespace Rougamo.APM
         /// </summary>
         public static string GetMethodParametersByRecord(this MethodContext context, ISerializer serializer)
         {
-            var records = context.Method.GetApmRecords() & 0x7FFFFFFFFFFFFFFF;
+            var records = context.Method.GetApmRecords() & ARGS_FLAG_MASK;
             var count = context.Arguments.Length;
             var builder = new StringBuilder();
             for (var i = 0; i < count; i++)
@@ -134,6 +180,36 @@ namespace Rougamo.APM
 
             var records = context.Method.GetApmRecords();
             return records >= 0 ? serializer.Serialize(context.ReturnValue) : "***";
+        }
+
+        /// <summary>
+        /// is mute exception for apm if it has been recorded
+        /// </summary>
+        public static bool IsMuteExceptionForApmByIgnores(this MethodContext context)
+        {
+            var throws = context.Method.GetApmIgnores() & (1 << THROWS_POSITION);
+            return throws == 0;
+        }
+
+        /// <summary>
+        /// is mute exception for apm if it has been recorded
+        /// </summary>
+        public static bool IsMuteExceptionForApmByRecord(this MethodContext context)
+        {
+            var throws = context.Method.GetApmRecords() & (1 << THROWS_POSITION);
+            return throws == 0;
+        }
+
+        private static bool HasAttribute<TAttribute>(this MethodBase method, bool inherit = true)
+        {
+            var attributes = method.GetCustomAttributes(typeof(TAttribute), inherit);
+            return attributes.Length != 0;
+        }
+
+        private static bool HasAttribute<TAttribute>(this ParameterInfo parameter, bool inherit = true)
+        {
+            var attributes = parameter.GetCustomAttributes(typeof(TAttribute), inherit);
+            return attributes.Length != 0;
         }
     }
 }

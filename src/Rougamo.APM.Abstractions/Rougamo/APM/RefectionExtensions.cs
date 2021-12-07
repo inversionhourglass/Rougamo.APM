@@ -11,7 +11,6 @@ namespace Rougamo.APM
     /// </summary>
     public static class RefectionExtensions
     {
-
         private const int ARGS_FLAG_COUNT = 48;
         private const long ARGS_FLAG_MASK = 0X7FFFFFFFFFFFFFFF >> (63 - ARGS_FLAG_COUNT);
         private const int RETURN_POSITION = 63;
@@ -151,7 +150,7 @@ namespace Rougamo.APM
             if (context.ReturnValue == null) return null;
 
             var ignores = context.Method.GetApmIgnores();
-            return ignores >= 0 ? "***" : serializer.Serialize(context.ReturnValue);
+            return ignores >= 0 ? serializer.Serialize(context.ReturnValue) : "***";
         }
 
         /// <summary>
@@ -179,7 +178,7 @@ namespace Rougamo.APM
             if (context.ReturnValue == null) return null;
 
             var records = context.Method.GetApmRecords();
-            return records >= 0 ? serializer.Serialize(context.ReturnValue) : "***";
+            return records >= 0 ? "***" : serializer.Serialize(context.ReturnValue);
         }
 
         /// <summary>

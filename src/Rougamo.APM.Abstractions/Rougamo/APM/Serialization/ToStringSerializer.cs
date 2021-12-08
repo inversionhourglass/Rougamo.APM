@@ -10,7 +10,7 @@
         /// </summary>
         public string Serialize(object obj)
         {
-            return obj.ToString();
+            return obj == null ? "null" : obj.ToString();
         }
     }
 }

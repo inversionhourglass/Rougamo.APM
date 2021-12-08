@@ -6,7 +6,7 @@ namespace Rougamo.APM
     /// do not mute the exception even it has been recorded
     /// </summary>
     [AttributeUsage(AttributeTargets.Method)]
-    public class ApmThrowsAttribute : Attribute
+    public class ApmExceptionAnnounceAttribute : Attribute
     {
     }
 }

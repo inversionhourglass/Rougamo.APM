@@ -9,7 +9,7 @@ namespace Rougamo.APM.Serialization
 
         public const string OPTIONS_NAME = "rougamo.apm";
 
-        public JsonSerializer(IOptionsSnapshot<JsonSerializerSettings> options)
+        public JsonSerializer(IOptionsMonitor<JsonSerializerSettings> options)
         {
             _settings = options.Get(OPTIONS_NAME);
         }

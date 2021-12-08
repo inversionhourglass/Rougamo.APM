@@ -48,7 +48,7 @@ namespace Rougamo.APM
                     ignores |= 1L << i;
                 }
             }
-            if(method.HasAttribute<ApmThrowsAttribute>())
+            if(method.HasAttribute<ApmExceptionAnnounceAttribute>())
             {
                 ignores |= 1L << THROWS_POSITION;
             }
@@ -83,7 +83,7 @@ namespace Rougamo.APM
                     records |= 1L << i;
                 }
             }
-            if (method.HasAttribute<ApmThrowsAttribute>())
+            if (method.HasAttribute<ApmExceptionAnnounceAttribute>())
             {
                 records |= 1L << THROWS_POSITION;
             }
@@ -99,7 +99,7 @@ namespace Rougamo.APM
         }
 
         /// <summary>
-        /// get method parameter recording string
+        /// get method parameter recording string, return null if no parameter need to record
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string GetMethodParameters(this MethodContext context, ISerializer serializer, bool recordByDefault)
@@ -126,7 +126,7 @@ namespace Rougamo.APM
         }
 
         /// <summary>
-        /// get method parameter recording string by <see cref="ApmIgnoreAttribute"/>
+        /// get method parameter recording string by <see cref="ApmIgnoreAttribute"/>, return null if no parameter need to record
         /// </summary>
         public static string GetMethodParametersByIgnore(this MethodContext context, ISerializer serializer)
         {
@@ -135,26 +135,28 @@ namespace Rougamo.APM
             var builder = new StringBuilder();
             for (var i = 0; i < count; i++)
             {
+                if((ignores & 1) != 1)
+                {
+                    builder.Append($"arg{i}={serializer.Serialize(context.Arguments[i])}&");
+                }
                 ignores >>= 1;
-                var value = (ignores & 1) == 1 ? "***" : context.Arguments[i];
-                builder.Append($"arg{i}={serializer.Serialize(value)}&");
             }
-            return builder.ToString();
+            return builder.Length == 0 ? null : builder.ToString();
         }
 
         /// <summary>
-        /// get method return value string by <see cref="ApmIgnoreAttribute"/>
+        /// get method return value string by <see cref="ApmIgnoreAttribute"/>, return null if not record return value
         /// </summary>
         public static string GetMethodReturnValueByIgnore(this MethodContext context, ISerializer serializer)
         {
             if (context.ReturnValue == null) return null;
 
             var ignores = context.Method.GetApmIgnores();
-            return ignores >= 0 ? serializer.Serialize(context.ReturnValue) : "***";
+            return ignores >= 0 ? serializer.Serialize(context.ReturnValue) : null;
         }
 
         /// <summary>
-        /// get method parameter recording string by <see cref="ApmRecordAttribute"/>
+        /// get method parameter recording string by <see cref="ApmRecordAttribute"/>, return null if no parameter need to record
         /// </summary>
         public static string GetMethodParametersByRecord(this MethodContext context, ISerializer serializer)
         {
@@ -163,22 +165,24 @@ namespace Rougamo.APM
             var builder = new StringBuilder();
             for (var i = 0; i < count; i++)
             {
+                if((records & 1) == 1)
+                {
+                    builder.Append($"arg{i}={serializer.Serialize(context.Arguments[i])}&");
+                }
                 records >>= 1;
-                var value = (records & 1) == 1 ? context.Arguments[i] : "***";
-                builder.Append($"arg{i}={serializer.Serialize(value)}&");
             }
-            return builder.ToString();
+            return builder.Length == 0 ? null : builder.ToString();
         }
 
         /// <summary>
-        /// get method return value string by <see cref="ApmRecordAttribute"/>
+        /// get method return value string by <see cref="ApmRecordAttribute"/>, return null if not record return value
         /// </summary>
         public static string GetMethodReturnValueByRecord(this MethodContext context, ISerializer serializer)
         {
             if (context.ReturnValue == null) return null;
 
             var records = context.Method.GetApmRecords();
-            return records >= 0 ? "***" : serializer.Serialize(context.ReturnValue);
+            return records >= 0 ? null : serializer.Serialize(context.ReturnValue);
         }
 
         /// <summary>
@@ -186,7 +190,7 @@ namespace Rougamo.APM
         /// </summary>
         public static bool IsMuteExceptionForApmByIgnores(this MethodContext context)
         {
-            var throws = context.Method.GetApmIgnores() & (1 << THROWS_POSITION);
+            var throws = context.Method.GetApmIgnores() & (1L << THROWS_POSITION);
             return throws == 0;
         }
 
@@ -195,7 +199,7 @@ namespace Rougamo.APM
         /// </summary>
         public static bool IsMuteExceptionForApmByRecord(this MethodContext context)
         {
-            var throws = context.Method.GetApmRecords() & (1 << THROWS_POSITION);
+            var throws = context.Method.GetApmRecords() & (1L << THROWS_POSITION);
             return throws == 0;
         }
 

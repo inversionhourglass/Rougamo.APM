@@ -1,4 +1,5 @@
 # Rougamo.APM
+
 APM全称Application Performance Management，
 现在常见的APM有[Pinpoint](https://github.com/pinpoint-apm/pinpoint), [Zipkin](https://github.com/openzipkin/zipkin),
 [SkyWalking](https://github.com/apache/skywalking), [CAT](https://github.com/dianping/cat), [jaeger](https://github.com/jaegertracing/jaeger)
@@ -10,8 +11,8 @@ APM全称Application Performance Management，
 和[代理织入](#代理织入)的方式，具体的APM实现可以移步[Rougamo.OpenTelemetry(0.1.1已发布)](https://github.com/inversionhourglass/Rougamo.OpenTelemetry)和
 [Rougamo.SkyWalking(开发中)](https://github.com/inversionhourglass/Rougamo.Skywalking)
 
-### Rougamo.APM.Abstractions
-##### 公共Attribute
+## Rougamo.APM.Abstractions
+### 公共Attribute
 `Rougamo.APM.Abstractions`中定义了一些公共Attribute，这样可以避免不同的APM实现中进行重复的定义，并且提供了获取这些公共Attribute的实现
 
 |Attribute|Target|意图|
@@ -46,7 +47,7 @@ void M3()
 }
 ```
 
-##### 代理织入
+### 代理织入
 `Rougamo.APM.Abstractions`中定义了数个Attribute，这些Attribute本身并不会使用`Rougamo`进行代码织入，它们是一种标记，
 而要通过这些标记进行AOP织入，我们需要借助`Rougamo`的[代理织入](https://github.com/inversionhourglass/Rougamo/blob/master/README.md#attribute%E4%BB%A3%E7%90%86%E7%BB%87%E5%85%A5moproxyattribute)
 功能了，比如下面我们通过代理织入[Rougamo.OpenTelemetry](https://github.com/inversionhourglass/Rougamo.OpenTelemetry)
@@ -67,7 +68,7 @@ void M2()
 }
 ```
 
-### Rougamo.APM.JsonSerialization
+## Rougamo.APM.JsonSerialization
 在记录参数和返回值时需要先将其序列化为字符串，默认使用的是[ToStringSerializer](https://github.com/inversionhourglass/Rougamo.APM/blob/master/src/Rougamo.APM.Abstractions/Rougamo/APM/Serialization/ToStringSerializer.cs)，
 实现是直接调用对象的`ToString`方法，可以自己实现[ISerializer](https://github.com/inversionhourglass/Rougamo.APM/blob/master/src/Rougamo.APM.Abstractions/Rougamo/APM/Serialization/ToStringSerializer.cs)
 并根据具体APM实现的要求替换掉默认的`ToStringSerializer`（一般通过`IServiceCollection`注册单例的方式替换）。`Rougamo.APM.JsonSerialization`项目就是提供了Json的序列化实现，

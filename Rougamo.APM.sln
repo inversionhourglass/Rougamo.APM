@@ -1,17 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31911.196
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0210579B-6F03-4895-9353-13EE0F51FCF3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rougamo.APM.Abstractions", "src\Rougamo.APM.Abstractions\Rougamo.APM.Abstractions.csproj", "{B76DD3F4-E2E0-47A1-835F-DDDC3FA7477A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rougamo.APM.Abstractions", "src\Rougamo.APM.Abstractions\Rougamo.APM.Abstractions.csproj", "{B76DD3F4-E2E0-47A1-835F-DDDC3FA7477A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rougamo.APM.JsonSerialization", "src\Rougamo.APM.JsonSerialization\Rougamo.APM.JsonSerialization.csproj", "{9929F695-FAB3-439B-8D69-228C411940C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rougamo.APM.JsonSerialization", "src\Rougamo.APM.JsonSerialization\Rougamo.APM.JsonSerialization.csproj", "{9929F695-FAB3-439B-8D69-228C411940C7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{4D90E40C-E488-4518-8292-5722739FC67B}"
 	ProjectSection(SolutionItems) = preProject
-		deploy.bat = deploy.bat
+		CHANGELOG.md = CHANGELOG.md
+		common.props = common.props
 		README.md = README.md
 		rougamo-apm.png = rougamo-apm.png
 	EndProjectSection

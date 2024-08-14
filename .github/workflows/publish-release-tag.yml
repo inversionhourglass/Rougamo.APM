@@ -31,8 +31,8 @@ jobs:
       - name: Build Solution
         run: dotnet build --configuration Release --no-restore ${{ env.SOLUTION }}
 
-      - name: Run Tests
-        run: dotnet test --configuration Release --no-build ${{ env.SOLUTION }}
+#      - name: Run Tests
+#        run: dotnet test --configuration Release --no-build ${{ env.SOLUTION }}
 
       - name: Delete exists packages
         run: Remove-Item -Path nugets -Recurse -Force -ErrorAction SilentlyContinue

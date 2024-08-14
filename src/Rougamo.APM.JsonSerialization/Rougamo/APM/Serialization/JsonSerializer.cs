@@ -14,7 +14,7 @@ namespace Rougamo.APM.Serialization
             _settings = options.Get(OPTIONS_NAME);
         }
 
-        public string Serialize(object obj)
+        public string Serialize(object? obj)
         {
             return JsonConvert.SerializeObject(obj, _settings);
         }

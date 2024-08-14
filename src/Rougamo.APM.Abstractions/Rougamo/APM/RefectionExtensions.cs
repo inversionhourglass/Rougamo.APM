@@ -102,7 +102,7 @@ namespace Rougamo.APM
         /// get method parameter recording string, return null if no parameter need to record
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static string GetMethodParameters(this MethodContext context, ISerializer serializer, bool recordByDefault)
+        public static string? GetMethodParameters(this MethodContext context, ISerializer serializer, bool recordByDefault)
         {
             return recordByDefault ? GetMethodParametersByIgnore(context, serializer) : GetMethodParametersByRecord(context, serializer);
         }
@@ -111,7 +111,7 @@ namespace Rougamo.APM
         /// get method return value string
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static string GetMethodReturnValue(this MethodContext context, ISerializer serializer, bool recordByDefault)
+        public static string? GetMethodReturnValue(this MethodContext context, ISerializer serializer, bool recordByDefault)
         {
             return recordByDefault ? GetMethodReturnValueByIgnore(context, serializer) : GetMethodReturnValueByRecord(context, serializer);
         }
@@ -128,7 +128,7 @@ namespace Rougamo.APM
         /// <summary>
         /// get method parameter recording string by <see cref="ApmIgnoreAttribute"/>, return null if no parameter need to record
         /// </summary>
-        public static string GetMethodParametersByIgnore(this MethodContext context, ISerializer serializer)
+        public static string? GetMethodParametersByIgnore(this MethodContext context, ISerializer serializer)
         {
             var ignores = context.Method.GetApmIgnores() & ARGS_FLAG_MASK;
             var count = context.Arguments.Length;
@@ -147,7 +147,7 @@ namespace Rougamo.APM
         /// <summary>
         /// get method return value string by <see cref="ApmIgnoreAttribute"/>, return null if not record return value
         /// </summary>
-        public static string GetMethodReturnValueByIgnore(this MethodContext context, ISerializer serializer)
+        public static string? GetMethodReturnValueByIgnore(this MethodContext context, ISerializer serializer)
         {
             if (context.ReturnValue == null) return null;
 
@@ -158,7 +158,7 @@ namespace Rougamo.APM
         /// <summary>
         /// get method parameter recording string by <see cref="ApmRecordAttribute"/>, return null if no parameter need to record
         /// </summary>
-        public static string GetMethodParametersByRecord(this MethodContext context, ISerializer serializer)
+        public static string? GetMethodParametersByRecord(this MethodContext context, ISerializer serializer)
         {
             var records = context.Method.GetApmRecords() & ARGS_FLAG_MASK;
             var count = context.Arguments.Length;
@@ -177,7 +177,7 @@ namespace Rougamo.APM
         /// <summary>
         /// get method return value string by <see cref="ApmRecordAttribute"/>, return null if not record return value
         /// </summary>
-        public static string GetMethodReturnValueByRecord(this MethodContext context, ISerializer serializer)
+        public static string? GetMethodReturnValueByRecord(this MethodContext context, ISerializer serializer)
         {
             if (context.ReturnValue == null) return null;
 

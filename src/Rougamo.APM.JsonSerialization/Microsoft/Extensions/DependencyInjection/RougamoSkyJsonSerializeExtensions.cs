@@ -11,7 +11,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <summary>
         /// change default parameter and return value serializer from <see cref="ToStringSerializer"/> to <see cref="Rougamo.APM.Serialization.JsonSerializer"/>
         /// </summary>
-        public static IServiceCollection AddRougamoJsonSerializer(this IServiceCollection services, Action<JsonSerializerSettings> settingAction = null)
+        public static IServiceCollection AddRougamoJsonSerializer(this IServiceCollection services, Action<JsonSerializerSettings>? settingAction = null)
         {
             services.AddOptions<JsonSerializerSettings>(Rougamo.APM.Serialization.JsonSerializer.OPTIONS_NAME).Configure(settings =>
             {

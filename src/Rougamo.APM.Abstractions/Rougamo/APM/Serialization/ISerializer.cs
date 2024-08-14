@@ -8,6 +8,6 @@
         /// <summary>
         /// serialize object to string
         /// </summary>
-        string Serialize(object obj);
+        string Serialize(object? obj);
     }
 }

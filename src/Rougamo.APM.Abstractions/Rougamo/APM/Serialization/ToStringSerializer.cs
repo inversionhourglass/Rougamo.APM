@@ -8,7 +8,7 @@
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
-        public string Serialize(object obj)
+        public string Serialize(object? obj)
         {
             return obj == null ? "null" : obj.ToString();
         }

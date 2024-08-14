@@ -1,33 +1,35 @@
 # Rougamo.APM
 
-APMÈ«³ÆApplication Performance Management£¬
-ÏÖÔÚ³£¼ûµÄAPMÓĞ[Pinpoint](https://github.com/pinpoint-apm/pinpoint), [Zipkin](https://github.com/openzipkin/zipkin),
+APMå…¨ç§°Application Performance Managementï¼Œ
+ç°åœ¨å¸¸è§çš„APMæœ‰[Pinpoint](https://github.com/pinpoint-apm/pinpoint), [Zipkin](https://github.com/openzipkin/zipkin),
 [SkyWalking](https://github.com/apache/skywalking), [CAT](https://github.com/dianping/cat), [jaeger](https://github.com/jaegertracing/jaeger)
-µÈ£¬ÕâĞ©Á÷ĞĞµÄAPMÒ»°ã¶¼×Ô´øIO²ãÃæµÄagent£¬Ê¹ÓÃÕâĞ©agentÎÒÃÇ¿ÉÒÔ¿ìËÙµÄ½«Ó¦ÓÃ½ÓÈë²¢¼ÇÂ¼IOºÄÊ±£¬µ«ÓĞÊ±ºòÎÒÃÇ¿ÉÄÜ»á¸Ğ¾õµ½½ö½öÊÇIO½ÓÈë²¢²»ÄÜºÜºÃ
-µÄ·ÖÎöºÍ½â¾öÎÊÌâ£¬ÕâÊ±ÎÒÃÇ¿ÉÄÜ»áÊÖ¶¯µÄÌí¼ÓÒ»Ğ©Âñµã£¬¶øÕâÖÖ²Ù×÷ÊÇÇÖÈëÊ½µÄÇÒ·±ËöµÄ£¬ÎªÁË±ÜÃâÕâ¸öÎÊÌâ£¬ÎÒÃÇ»áÏëµ½Ê¹ÓÃAOP½øĞĞÂñµã£¬¶ø
-[Rougamo](https://github.com/inversionhourglass/Rougamo)×÷ÎªÒ»¸ö¾²Ì¬AOP×é¼ş£¬×ÔÈ»Ò²ÄÜºÜºÃµÄÍê³ÉÕâÒ»ÈÎÎñ¡£
+ç­‰ï¼Œè¿™äº›æµè¡Œçš„APMä¸€èˆ¬éƒ½è‡ªå¸¦IOå±‚é¢çš„agentï¼Œä½¿ç”¨è¿™äº›agentæˆ‘ä»¬å¯ä»¥å¿«é€Ÿçš„å°†åº”ç”¨æ¥å…¥å¹¶è®°å½•IOè€—æ—¶ï¼Œä½†æœ‰æ—¶å€™æˆ‘ä»¬å¯èƒ½ä¼šæ„Ÿè§‰åˆ°ä»…ä»…æ˜¯IOæ¥å…¥å¹¶ä¸èƒ½å¾ˆå¥½
+çš„åˆ†æå’Œè§£å†³é—®é¢˜ï¼Œè¿™æ—¶æˆ‘ä»¬å¯èƒ½ä¼šæ‰‹åŠ¨çš„æ·»åŠ ä¸€äº›åŸ‹ç‚¹ï¼Œè€Œè¿™ç§æ“ä½œæ˜¯ä¾µå…¥å¼çš„ä¸”ç¹ççš„ï¼Œä¸ºäº†é¿å…è¿™ä¸ªé—®é¢˜ï¼Œæˆ‘ä»¬ä¼šæƒ³åˆ°ä½¿ç”¨AOPè¿›è¡ŒåŸ‹ç‚¹ï¼Œè€Œ
+[Rougamo](https://github.com/inversionhourglass/Rougamo)ä½œä¸ºä¸€ä¸ªé™æ€AOPç»„ä»¶ï¼Œè‡ªç„¶ä¹Ÿèƒ½å¾ˆå¥½çš„å®Œæˆè¿™ä¸€ä»»åŠ¡ã€‚
 
-¸ÃÏîÄ¿²¢²»°üº¬ÈÎºÎAPMµÄ¾ßÌåÊµÏÖ£¬Ö÷ÒªÊÇÎªËùÓĞÊ¹ÓÃ[Rougamo](https://github.com/inversionhourglass/Rougamo)½øĞĞAPM´úÂëÖ¯ÈëµÄÏîÄ¿Ìá¹©Ò»Ğ©»ù´¡ÊµÏÖ
-ºÍ[´úÀíÖ¯Èë](#´úÀíÖ¯Èë)µÄ·½Ê½£¬¾ßÌåµÄAPMÊµÏÖ¿ÉÒÔÒÆ²½[Rougamo.OpenTelemetry(0.1.1ÒÑ·¢²¼)](https://github.com/inversionhourglass/Rougamo.OpenTelemetry)ºÍ
-[Rougamo.SkyWalking(¿ª·¢ÖĞ)](https://github.com/inversionhourglass/Rougamo.Skywalking)
+è¯¥é¡¹ç›®å¹¶ä¸åŒ…å«ä»»ä½•APMçš„å…·ä½“å®ç°ï¼Œä¸»è¦æ˜¯ä¸ºæ‰€æœ‰ä½¿ç”¨[Rougamo](https://github.com/inversionhourglass/Rougamo)è¿›è¡ŒAPMä»£ç ç»‡å…¥çš„é¡¹ç›®æä¾›ä¸€äº›åŸºç¡€å®ç°
+å’Œ[ä»£ç†ç»‡å…¥](#ä»£ç†ç»‡å…¥)çš„æ–¹å¼ï¼Œå…·ä½“çš„APMå®ç°å¯ä»¥ç§»æ­¥[Rougamo.OpenTelemetry(0.1.1å·²å‘å¸ƒ)](https://github.com/inversionhourglass/Rougamo.OpenTelemetry)å’Œ
+[Rougamo.SkyWalking(å¼€å‘ä¸­)](https://github.com/inversionhourglass/Rougamo.Skywalking)
 
 ## Rougamo.APM.Abstractions
-### ¹«¹²Attribute
-`Rougamo.APM.Abstractions`ÖĞ¶¨ÒåÁËÒ»Ğ©¹«¹²Attribute£¬ÕâÑù¿ÉÒÔ±ÜÃâ²»Í¬µÄAPMÊµÏÖÖĞ½øĞĞÖØ¸´µÄ¶¨Òå£¬²¢ÇÒÌá¹©ÁË»ñÈ¡ÕâĞ©¹«¹²AttributeµÄÊµÏÖ
 
-|Attribute|Target|ÒâÍ¼|
+### å…¬å…±Attribute
+
+`Rougamo.APM.Abstractions`ä¸­å®šä¹‰äº†ä¸€äº›å…¬å…±Attributeï¼Œè¿™æ ·å¯ä»¥é¿å…ä¸åŒçš„APMå®ç°ä¸­è¿›è¡Œé‡å¤çš„å®šä¹‰ï¼Œå¹¶ä¸”æä¾›äº†è·å–è¿™äº›å…¬å…±Attributeçš„å®ç°
+
+|Attribute|Target|æ„å›¾|
 |:--:|:--:|:--|
-|SpanAttribute|·½·¨|´úÀíÖ¯ÈëµÄ±ê¼ÇAttribute£¬±ê¼ÇÁË¸ÃAttributeµÄ·½·¨»á¼ÇÂ¼Ò»¸öSpan£¬Ä¬ÈÏ»á¼ÇÂ¼·½·¨µÄ²ÎÊıÖµºÍ·µ»ØÖµ|
-|PureSpanAttribute|·½·¨|´úÀíÖ¯ÈëµÄ±ê¼ÇAttribute£¬±ê¼ÇÁË¸ÃAttributeµÄ·½·¨»á¼ÇÂ¼Ò»¸öSpan£¬Ä¬ÈÏ<font color=red>²»»á</font>¼ÇÂ¼·½·¨µÄ²ÎÊıÖµºÍ·µ»ØÖµ|
-|ApmIgnoreAttribute|²ÎÊı,·µ»ØÖµ|Óë`SpanAttribute`½áºÏÊ¹ÓÃ£¬ºöÂÔÖ¸¶¨²ÎÊıºÍ·µ»ØÖµµÄ¼ÇÂ¼|
-|ApmRecordAttribute|²ÎÊı,·µ»ØÖµ|Óë`PureSpanAttribute`½áºÏÊ¹ÓÃ£¬¼ÇÂ¼Ö¸¶¨²ÎÊıºÍ·µ»ØÖµ|
-|ApmExceptionAnnounceAttribute|·½·¨|Èç¹û·½·¨ÓĞÎ´´¦ÀíµÄÒì³££¬Ä¬ÈÏ¸ÃÒì³£Ö»»á¼ÇÂ¼Ò»´Î£¬µ«ËùÓĞÎ´´¦Àí¸ÃÒì³£µÄ·½·¨µÄSpanµÄ×´Ì¬¶¼»áÉèÖÃÎªÊ§°Ü£¬Ê¹ÓÃ¸ÃAttribute»áÇ¿ÖÆ¼ÇÂ¼Òì³£ĞÅÏ¢£¬¼´Ê¹¸ÃÒì³£ÒÑ¾­¼ÇÂ¼¹ı£¬Ïê¼ûÏÂÃæÊ¾Àı|
+|SpanAttribute|æ–¹æ³•|ä»£ç†ç»‡å…¥çš„æ ‡è®°Attributeï¼Œæ ‡è®°äº†è¯¥Attributeçš„æ–¹æ³•ä¼šè®°å½•ä¸€ä¸ªSpanï¼Œé»˜è®¤ä¼šè®°å½•æ–¹æ³•çš„å‚æ•°å€¼å’Œè¿”å›å€¼|
+|PureSpanAttribute|æ–¹æ³•|ä»£ç†ç»‡å…¥çš„æ ‡è®°Attributeï¼Œæ ‡è®°äº†è¯¥Attributeçš„æ–¹æ³•ä¼šè®°å½•ä¸€ä¸ªSpanï¼Œé»˜è®¤<font color=red>ä¸ä¼š</font>è®°å½•æ–¹æ³•çš„å‚æ•°å€¼å’Œè¿”å›å€¼|
+|ApmIgnoreAttribute|å‚æ•°,è¿”å›å€¼|ä¸`SpanAttribute`ç»“åˆä½¿ç”¨ï¼Œå¿½ç•¥æŒ‡å®šå‚æ•°å’Œè¿”å›å€¼çš„è®°å½•|
+|ApmRecordAttribute|å‚æ•°,è¿”å›å€¼|ä¸`PureSpanAttribute`ç»“åˆä½¿ç”¨ï¼Œè®°å½•æŒ‡å®šå‚æ•°å’Œè¿”å›å€¼|
+|ApmExceptionAnnounceAttribute|æ–¹æ³•|å¦‚æœæ–¹æ³•æœ‰æœªå¤„ç†çš„å¼‚å¸¸ï¼Œé»˜è®¤è¯¥å¼‚å¸¸åªä¼šè®°å½•ä¸€æ¬¡ï¼Œä½†æ‰€æœ‰æœªå¤„ç†è¯¥å¼‚å¸¸çš„æ–¹æ³•çš„Spançš„çŠ¶æ€éƒ½ä¼šè®¾ç½®ä¸ºå¤±è´¥ï¼Œä½¿ç”¨è¯¥Attributeä¼šå¼ºåˆ¶è®°å½•å¼‚å¸¸ä¿¡æ¯ï¼Œå³ä½¿è¯¥å¼‚å¸¸å·²ç»è®°å½•è¿‡ï¼Œè¯¦è§ä¸‹é¢ç¤ºä¾‹|
 
 ```csharp
-// ¹ØÓÚApmExceptionAnnounce×÷ÓÃµÄÊ¾Àı
-// ÏÂÃæµÄÊ¾ÀıÖĞ£¬ÓÉÓÚM3ÖĞÓĞÎ´´¦ÀíµÄÒì³££¬M3ÉÏµÄSpan»á¼ÇÂ¼Òì³£ĞÅÏ¢²¢½«×Ô¼ºµÄ×´Ì¬ÉèÖÃÎªÊ§°Ü£¬
-// M2µ÷ÓÃM3Í¬Ê±Ò²Ã»ÓĞ²¶»ñ´¦ÀíÒì³££¬µ«ÓÉÓÚ¸ÃÒì³£ÒÑ¾­ÓÉM3¼ÇÂ¼£¬ËùÒÔM2µÄSpanÖ»»á½²×Ô¼ºµÄ×´Ì¬ÉèÖÃÎªÊ§°Ü£¬²¢²»»á¼ÇÂ¼Òì³£ĞÅÏ¢£¬
-// M1µ÷ÓÃM2Í¬Ê±Ò²Ã»ÓĞ²¶»ñ´¦ÀíÒì³££¬µ«ÓÉÓÚÌí¼ÓÁËApmExceptionAnnounceAttribute£¬ËùÒÔ³ıÁË½«×´Ì¬ÉèÖÃÎªÊ§°ÜÍâ£¬»¹»á¼ÇÂ¼Òì³£ĞÅÏ¢
+// å…³äºApmExceptionAnnounceä½œç”¨çš„ç¤ºä¾‹
+// ä¸‹é¢çš„ç¤ºä¾‹ä¸­ï¼Œç”±äºM3ä¸­æœ‰æœªå¤„ç†çš„å¼‚å¸¸ï¼ŒM3ä¸Šçš„Spanä¼šè®°å½•å¼‚å¸¸ä¿¡æ¯å¹¶å°†è‡ªå·±çš„çŠ¶æ€è®¾ç½®ä¸ºå¤±è´¥ï¼Œ
+// M2è°ƒç”¨M3åŒæ—¶ä¹Ÿæ²¡æœ‰æ•è·å¤„ç†å¼‚å¸¸ï¼Œä½†ç”±äºè¯¥å¼‚å¸¸å·²ç»ç”±M3è®°å½•ï¼Œæ‰€ä»¥M2çš„Spanåªä¼šè®²è‡ªå·±çš„çŠ¶æ€è®¾ç½®ä¸ºå¤±è´¥ï¼Œå¹¶ä¸ä¼šè®°å½•å¼‚å¸¸ä¿¡æ¯ï¼Œ
+// M1è°ƒç”¨M2åŒæ—¶ä¹Ÿæ²¡æœ‰æ•è·å¤„ç†å¼‚å¸¸ï¼Œä½†ç”±äºæ·»åŠ äº†ApmExceptionAnnounceAttributeï¼Œæ‰€ä»¥é™¤äº†å°†çŠ¶æ€è®¾ç½®ä¸ºå¤±è´¥å¤–ï¼Œè¿˜ä¼šè®°å½•å¼‚å¸¸ä¿¡æ¯
 
 [ApmExceptionAnnounce]
 [Span]
@@ -47,21 +49,22 @@ void M3()
 }
 ```
 
-### ´úÀíÖ¯Èë
-`Rougamo.APM.Abstractions`ÖĞ¶¨ÒåÁËÊı¸öAttribute£¬ÕâĞ©Attribute±¾Éí²¢²»»áÊ¹ÓÃ`Rougamo`½øĞĞ´úÂëÖ¯Èë£¬ËüÃÇÊÇÒ»ÖÖ±ê¼Ç£¬
-¶øÒªÍ¨¹ıÕâĞ©±ê¼Ç½øĞĞAOPÖ¯Èë£¬ÎÒÃÇĞèÒª½èÖú`Rougamo`µÄ[´úÀíÖ¯Èë](https://github.com/inversionhourglass/Rougamo/blob/master/README.md#attribute%E4%BB%A3%E7%90%86%E7%BB%87%E5%85%A5moproxyattribute)
-¹¦ÄÜÁË£¬±ÈÈçÏÂÃæÎÒÃÇÍ¨¹ı´úÀíÖ¯Èë[Rougamo.OpenTelemetry](https://github.com/inversionhourglass/Rougamo.OpenTelemetry)
-´úÂë£¬¿Éµ½`Rougamo.OpenTelemetry`ÏîÄ¿ÖĞ²é¿´[ÍêÕûÊµÀı](https://github.com/inversionhourglass/Rougamo.OpenTelemetry/blob/master/test/sample/Rougamo.OpenTelemetryJaegerTest.AspNetCore/Utils/RandomUtils.cs)
+### ä»£ç†ç»‡å…¥
+
+`Rougamo.APM.Abstractions`ä¸­å®šä¹‰äº†æ•°ä¸ªAttributeï¼Œè¿™äº›Attributeæœ¬èº«å¹¶ä¸ä¼šä½¿ç”¨`Rougamo`è¿›è¡Œä»£ç ç»‡å…¥ï¼Œå®ƒä»¬æ˜¯ä¸€ç§æ ‡è®°ï¼Œ
+è€Œè¦é€šè¿‡è¿™äº›æ ‡è®°è¿›è¡ŒAOPç»‡å…¥ï¼Œæˆ‘ä»¬éœ€è¦å€ŸåŠ©`Rougamo`çš„[ä»£ç†ç»‡å…¥](https://github.com/inversionhourglass/Rougamo/blob/master/README.md#attribute%E4%BB%A3%E7%90%86%E7%BB%87%E5%85%A5moproxyattribute)
+åŠŸèƒ½äº†ï¼Œæ¯”å¦‚ä¸‹é¢æˆ‘ä»¬é€šè¿‡ä»£ç†ç»‡å…¥[Rougamo.OpenTelemetry](https://github.com/inversionhourglass/Rougamo.OpenTelemetry)
+ä»£ç ï¼Œå¯åˆ°`Rougamo.OpenTelemetry`é¡¹ç›®ä¸­æŸ¥çœ‹[å®Œæ•´å®ä¾‹](https://github.com/inversionhourglass/Rougamo.OpenTelemetry/blob/master/test/sample/Rougamo.OpenTelemetryJaegerTest.AspNetCore/Utils/RandomUtils.cs)
 ```csharp
 [assembly: MoProxy(typeof(SpanAttribute), typeof(OtelAttribute))]
 [assembly: MoProxy(typeof(PureSpanAttribute), typeof(PureOtelAttribute))]
 
-// ½«Ö¯ÈëOtelAttributeµÄÊµÏÖ´úÂë
+// å°†ç»‡å…¥OtelAttributeçš„å®ç°ä»£ç 
 [Span]
 void M1()
 {
 }
-// ½«Ö¯ÈëPureOtelAttributeµÄÊµÏÖ´úÂë
+// å°†ç»‡å…¥PureOtelAttributeçš„å®ç°ä»£ç 
 [PureSpan]
 void M2()
 {
@@ -69,10 +72,11 @@ void M2()
 ```
 
 ## Rougamo.APM.JsonSerialization
-ÔÚ¼ÇÂ¼²ÎÊıºÍ·µ»ØÖµÊ±ĞèÒªÏÈ½«ÆäĞòÁĞ»¯Îª×Ö·û´®£¬Ä¬ÈÏÊ¹ÓÃµÄÊÇ[ToStringSerializer](https://github.com/inversionhourglass/Rougamo.APM/blob/master/src/Rougamo.APM.Abstractions/Rougamo/APM/Serialization/ToStringSerializer.cs)£¬
-ÊµÏÖÊÇÖ±½Óµ÷ÓÃ¶ÔÏóµÄ`ToString`·½·¨£¬¿ÉÒÔ×Ô¼ºÊµÏÖ[ISerializer](https://github.com/inversionhourglass/Rougamo.APM/blob/master/src/Rougamo.APM.Abstractions/Rougamo/APM/Serialization/ToStringSerializer.cs)
-²¢¸ù¾İ¾ßÌåAPMÊµÏÖµÄÒªÇóÌæ»»µôÄ¬ÈÏµÄ`ToStringSerializer`£¨Ò»°ãÍ¨¹ı`IServiceCollection`×¢²áµ¥ÀıµÄ·½Ê½Ìæ»»£©¡£`Rougamo.APM.JsonSerialization`ÏîÄ¿¾ÍÊÇÌá¹©ÁËJsonµÄĞòÁĞ»¯ÊµÏÖ£¬
-ÏîÄ¿Ê¹ÓÃ`Newtonsoft.Json`½øĞĞĞòÁĞ»¯£¬Í¨¹ı`services.AddRougamoJsonSerializer()`½øĞĞ×¢²á¡£
+
+åœ¨è®°å½•å‚æ•°å’Œè¿”å›å€¼æ—¶éœ€è¦å…ˆå°†å…¶åºåˆ—åŒ–ä¸ºå­—ç¬¦ä¸²ï¼Œé»˜è®¤ä½¿ç”¨çš„æ˜¯[ToStringSerializer](https://github.com/inversionhourglass/Rougamo.APM/blob/master/src/Rougamo.APM.Abstractions/Rougamo/APM/Serialization/ToStringSerializer.cs)ï¼Œ
+å®ç°æ˜¯ç›´æ¥è°ƒç”¨å¯¹è±¡çš„`ToString`æ–¹æ³•ï¼Œå¯ä»¥è‡ªå·±å®ç°[ISerializer](https://github.com/inversionhourglass/Rougamo.APM/blob/master/src/Rougamo.APM.Abstractions/Rougamo/APM/Serialization/ToStringSerializer.cs)
+å¹¶æ ¹æ®å…·ä½“APMå®ç°çš„è¦æ±‚æ›¿æ¢æ‰é»˜è®¤çš„`ToStringSerializer`ï¼ˆä¸€èˆ¬é€šè¿‡`IServiceCollection`æ³¨å†Œå•ä¾‹çš„æ–¹å¼æ›¿æ¢ï¼‰ã€‚`Rougamo.APM.JsonSerialization`é¡¹ç›®å°±æ˜¯æä¾›äº†Jsonçš„åºåˆ—åŒ–å®ç°ï¼Œ
+é¡¹ç›®ä½¿ç”¨`Newtonsoft.Json`è¿›è¡Œåºåˆ—åŒ–ï¼Œé€šè¿‡`services.AddRougamoJsonSerializer()`è¿›è¡Œæ³¨å†Œã€‚
 ```csharp
 public class Startup
 {
@@ -80,11 +84,11 @@ public class Startup
     {
         // ...
 
-        services.AddRougamoJsonSerializer(); // Ê¹ÓÃÄ¬ÈÏĞòÁĞ»¯ÅäÖÃ
+        services.AddRougamoJsonSerializer(); // ä½¿ç”¨é»˜è®¤åºåˆ—åŒ–é…ç½®
 
         services.AddRougamoJsonSerializer(settings =>
         {
-            // ĞŞ¸ÄNewtonsoft.JsonµÄĞòÁĞ»¯ÅäÖÃ
+            // ä¿®æ”¹Newtonsoft.Jsonçš„åºåˆ—åŒ–é…ç½®
         });
 
         // ...

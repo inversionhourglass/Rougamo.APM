@@ -1,22 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="../../common.props" />
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace />
-    <Version>0.1.0</Version>
-    <Authors>ihourglass</Authors>
     <Description>json serializer of rougamo apm parameter and return value record</Description>
-    <PackageTags>AOP APM</PackageTags>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
-    <PackageOutputPath>$(SolutionDir)nugets</PackageOutputPath>
-    <PackageProjectUrl>https://github.com/inversionhourglass/Rougamo.APM</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/inversionhourglass/Rougamo.APM.git</RepositoryUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/inversionhourglass/Rougamo.APM/master/rougamo-apm.png</PackageIconUrl>
-    <RepositoryType>git</RepositoryType>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

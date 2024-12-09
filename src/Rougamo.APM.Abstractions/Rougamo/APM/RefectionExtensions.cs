@@ -29,7 +29,7 @@ namespace Rougamo.APM
         private static ConcurrentDictionary<MethodBase, long> _Records = new ConcurrentDictionary<MethodBase, long>();
 
         /// <summary>
-        /// get ignores arguments and return value which marked by <see cref="ApmIgnoreAttribute"/>
+        /// Get ignores arguments and return value which marked by <see cref="ApmIgnoreAttribute"/>
         /// </summary>
         public static long GetApmIgnores(this MethodBase method)
         {
@@ -64,7 +64,7 @@ namespace Rougamo.APM
         }
 
         /// <summary>
-        /// get record arguments and return value which marked by <see cref="ApmRecordAttribute"/>
+        /// Get record arguments and return value which marked by <see cref="ApmRecordAttribute"/>
         /// </summary>
         public static long GetApmRecords(this MethodBase method)
         {
@@ -99,7 +99,7 @@ namespace Rougamo.APM
         }
 
         /// <summary>
-        /// get method parameter recording string, return null if no parameter need to record
+        /// Get method parameter recording string, return null if no parameter need to record
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string? GetMethodParameters(this MethodContext context, ISerializer serializer, bool recordByDefault)
@@ -108,7 +108,7 @@ namespace Rougamo.APM
         }
 
         /// <summary>
-        /// get method return value string
+        /// Get method return value string
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string? GetMethodReturnValue(this MethodContext context, ISerializer serializer, bool recordByDefault)
@@ -117,7 +117,7 @@ namespace Rougamo.APM
         }
 
         /// <summary>
-        /// is mute exception for apm if it has been recorded
+        /// Is mute exception for apm if it has been recorded
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool IsMuteExceptionForApm(this MethodContext context, bool recordByDefault)
@@ -126,7 +126,7 @@ namespace Rougamo.APM
         }
 
         /// <summary>
-        /// get method parameter recording string by <see cref="ApmIgnoreAttribute"/>, return null if no parameter need to record
+        /// Get method parameter recording string by <see cref="ApmIgnoreAttribute"/>, return null if no parameter need to record
         /// </summary>
         public static string? GetMethodParametersByIgnore(this MethodContext context, ISerializer serializer)
         {
@@ -145,7 +145,7 @@ namespace Rougamo.APM
         }
 
         /// <summary>
-        /// get method return value string by <see cref="ApmIgnoreAttribute"/>, return null if not record return value
+        /// Get method return value string by <see cref="ApmIgnoreAttribute"/>, return null if not record return value
         /// </summary>
         public static string? GetMethodReturnValueByIgnore(this MethodContext context, ISerializer serializer)
         {
@@ -156,7 +156,7 @@ namespace Rougamo.APM
         }
 
         /// <summary>
-        /// get method parameter recording string by <see cref="ApmRecordAttribute"/>, return null if no parameter need to record
+        /// Get method parameter recording string by <see cref="ApmRecordAttribute"/>, return null if no parameter need to record
         /// </summary>
         public static string? GetMethodParametersByRecord(this MethodContext context, ISerializer serializer)
         {
@@ -175,7 +175,7 @@ namespace Rougamo.APM
         }
 
         /// <summary>
-        /// get method return value string by <see cref="ApmRecordAttribute"/>, return null if not record return value
+        /// Get method return value string by <see cref="ApmRecordAttribute"/>, return null if not record return value
         /// </summary>
         public static string? GetMethodReturnValueByRecord(this MethodContext context, ISerializer serializer)
         {
@@ -186,7 +186,7 @@ namespace Rougamo.APM
         }
 
         /// <summary>
-        /// is mute exception for apm if it has been recorded
+        /// Is mute exception for apm if it has been recorded
         /// </summary>
         public static bool IsMuteExceptionForApmByIgnores(this MethodContext context)
         {
@@ -195,7 +195,7 @@ namespace Rougamo.APM
         }
 
         /// <summary>
-        /// is mute exception for apm if it has been recorded
+        /// Is mute exception for apm if it has been recorded
         /// </summary>
         public static bool IsMuteExceptionForApmByRecord(this MethodContext context)
         {

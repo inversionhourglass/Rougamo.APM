@@ -1,14 +1,4 @@
-**注意：`Rougamo.APM.Abstractions`和`Rougamo.APM.JsonSerialization`共享以下更新内容**
+# 5.0.0
 
-- 更新依赖的NuGet版本
-  
-  |               包名              |      版本变化      |
-  |:------------------------------:|:-----------------:|
-  | `Rougamo.Fody`                 | `1.0.1 -> 4.0.0`  |
-  | `Microsoft.SourceLink.GitHub`  | `1.1.1 -> 8.0.0`  |
-  | `Newtonsoft.Json`              | `9.0.1 -> 13.0.1` |
-  | `Microsoft.Extensions.Options` | `3.0.0 -> 3.1.0+` |
-
-- SDK版本新增net6.0, net7.0, net8.0，不同的SDK版本针对某些NuGet引用不同的版本
-
----
+- 降低`Rougamo.Fody`依赖版本为`1.0.1`，仅使用`MethodContext`，不需要依赖高版本。依赖低版本可以提供更好的兼容性
+- 移出`Rougamo.APM.JsonSerialization`项目的多SDK版本支持，仅使用`netstandard2.0`。没有针对特定版本有特殊操作，使用`netstandard2.0`即可提供最佳兼容

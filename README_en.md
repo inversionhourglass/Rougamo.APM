@@ -1,5 +1,7 @@
 # Rougamo.APM
 
+[中文](https://github.com/inversionhourglass/Rougamo.APM/blob/master/README.md) | English
+
 APM stands for Application Performance Management. Some common APM tools include [Pinpoint](https://github.com/pinpoint-apm/pinpoint), [Zipkin](https://github.com/openzipkin/zipkin), [SkyWalking](https://github.com/apache/skywalking), [CAT](https://github.com/dianping/cat), and [Jaeger](https://github.com/jaegertracing/jaeger). These popular APM tools typically come with built-in IO-level agents, which allow us to quickly integrate and record IO performance. However, sometimes IO integration alone might not be sufficient for thorough analysis and problem-solving. In such cases, we might need to manually add some instrumentation, which can be intrusive and cumbersome. To avoid this, we can use AOP for instrumentation, and [Rougamo](https://github.com/inversionhourglass/Rougamo), as a static AOP component, can effectively handle this task.
 
 This project does not include any specific APM implementations but provides basic implementations and [proxy weaving](#代理织入) methods for projects using [Rougamo](https://github.com/inversionhourglass/Rougamo) for APM code weaving. For specific APM implementations, refer to [Rougamo.OpenTelemetry (0.1.1 released)](https://github.com/inversionhourglass/Rougamo.OpenTelemetry) and [Rougamo.SkyWalking (in development)](https://github.com/inversionhourglass/Rougamo.Skywalking).

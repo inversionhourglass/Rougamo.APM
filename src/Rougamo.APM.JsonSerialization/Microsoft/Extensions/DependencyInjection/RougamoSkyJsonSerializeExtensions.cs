@@ -9,7 +9,7 @@ namespace Microsoft.Extensions.DependencyInjection
     public static class RougamoSkyJsonSerializeExtensions
     {
         /// <summary>
-        /// change default parameter and return value serializer from <see cref="ToStringSerializer"/> to <see cref="Rougamo.APM.Serialization.JsonSerializer"/>
+        /// Change default parameter and return value serializer from <see cref="ToStringSerializer"/> to <see cref="Rougamo.APM.Serialization.JsonSerializer"/>
         /// </summary>
         public static IServiceCollection AddRougamoJsonSerializer(this IServiceCollection services, Action<JsonSerializerSettings>? settingAction = null)
         {

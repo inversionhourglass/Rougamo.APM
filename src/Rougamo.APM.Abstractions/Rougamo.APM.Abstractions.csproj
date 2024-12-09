@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Rougamo.Fody" Version="4.0.0" />
+    <PackageReference Include="Rougamo.Fody" Version="1.0.1" ExcludeAssets="Build" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,7 @@
 # Rougamo.APM
 
+中文 | [English](https://github.com/inversionhourglass/Rougamo.APM/blob/master/README_en.md)
+
 APM全称Application Performance Management，
 现在常见的APM有[Pinpoint](https://github.com/pinpoint-apm/pinpoint), [Zipkin](https://github.com/openzipkin/zipkin),
 [SkyWalking](https://github.com/apache/skywalking), [CAT](https://github.com/dianping/cat), [jaeger](https://github.com/jaegertracing/jaeger)
